@@ -1,0 +1,46 @@
+<div class="row">
+
+    <div class="col-sm-6 card" style="min-height: 400px">
+        <h5 class="margin-top-10px">All items({{items.length}})</h5>
+        <div class="list-group margin-top-10px">
+            <div class="" *ngFor="let item of items">
+                <div style="display: flex">
+                    <button class="btn customBtn" (click)="Delete(item)">Delete</button>
+                    <button class="btn customBtn" (click)="ShowEditInput(item)">Edit</button>
+                    <button class="btn customBtn" (click)="Select(item)">Select</button>
+                </div>
+
+                <div class="list-group-item">{{item.name}}</div>
+            </div>
+            <div *ngIf="editItem" style="margin: 5px">
+                <p>Edit item {{editItem}}</p>
+                <input type="text" (keyup)="OnEditKeyUp($event)" class="form-control">
+                <button (click)="EditItem(editItem)" class="btn" style="margin: 5px">Edit item</button>
+                <button (click)="CloseEditBar()" class="btn" style="margin: 5px">Close</button>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 card" style="min-height: 400px">
+        <h5 class="margin-top-10px">All selected items({{selectedItems.length}})</h5>
+        <h6 *ngIf="selectedItems.length==0">The are no selected items here</h6>
+        <div class="list-group margin-top-10px">
+            <div  *ngFor="let item of selectedItems">
+                <div style="display: flex">
+                    <button class="btn customBtn" (click)="DeleteSelected(item)">Delete</button>
+                    <button class="btn customBtn" (click)="ShowEditInputSelected(item)">Edit</button>
+                    <button class="btn customBtn" (click)="unSelect(item)">Unselect</button>
+                </div>
+             
+                <div class="list-group-item">{{item.name}}</div>
+            </div>
+            <div *ngIf="editItemSelected" style="margin: 5px">
+                    <p>Edit item {{editItemSelected}}</p>
+                    <input type="text" (keyup)="OnEditKeyUpSel($event)" class="form-control">
+                    <button (click)="EditItemSelected(editItemSelected)" class="btn" style="margin: 5px">Edit item</button>
+                    <button (click)="CloseEditBarSelected()" class="btn" style="margin: 5px">Close</button>
+    
+                </div>
+        </div>
+    </div>
+</div>
